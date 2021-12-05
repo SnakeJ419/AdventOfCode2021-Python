@@ -1,18 +1,11 @@
 import Utils
+import numpy as np
 
 
 def part_one():
     array = Utils.get_file_as_array('Inputs/Day4.txt')
-    called = [int(x) for x in array[0].split(',')]
-    boards = []
-    i = 2
-    while i < len(array):
-        new_board = []
-        while i != len(array) and array[i] != '\n':
-            new_board.append([int(s) for s in filter(''.__ne__, array[i].strip('\n').split(' '))])
-            i += 1
-        boards.append(new_board)
-        i += 1
+    called = [int(x) for x in array.pop(0).split(',')]
+    boards = [[[int(x) for x in filter(''.__ne__, y.strip('\n').split(' '))] for y in b] for b in [[list(filter('\n'.__ne__, array))[l*5 + n] for n in range(5)] for l in range(int(len(list(filter('\n'.__ne__, array)))/5))]]
     for call in called:
         for board in range(len(boards)):
             for y in range(len(boards[board])):
@@ -31,16 +24,8 @@ def part_one():
 
 def part_two():
     array = Utils.get_file_as_array('Inputs/Day4.txt')
-    called = [int(x) for x in array[0].split(',')]
-    boards = []
-    i = 2
-    while i < len(array):
-        new_board = []
-        while i != len(array) and array[i] != '\n':
-            new_board.append([int(s) for s in filter(''.__ne__, array[i].strip('\n').split(' '))])
-            i += 1
-        boards.append(new_board)
-        i += 1
+    called = [int(x) for x in array.pop(0).split(',')]
+    boards = [[[int(x) for x in filter(''.__ne__, y.strip('\n').split(' '))] for y in b] for b in [[list(filter('\n'.__ne__, array))[l * 5 + n] for n in range(5)] for l in range(int(len(list(filter('\n'.__ne__, array))) / 5))]]
 
     loosers = [0] * len(boards)
     for call in called:
