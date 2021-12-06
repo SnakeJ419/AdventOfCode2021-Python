@@ -6,10 +6,8 @@ def part_one():
     course_map = [[0] * 1000 for x in range(1000)]
     coords_list = [[[int(i) for i in c.split(',')]for c in line.split(' -> ')] for line in array]
     for coords in coords_list:
-        y1 = coords[0][0]
-        y2 = coords[1][0]
-        x1 = coords[0][1]
-        x2 = coords[1][1]
+        y1, x1 = coords[0]
+        y2, x2 = coords[1]
         if x1 == x2:
             for i in range(abs(y1-y2)+1):
                 course_map[x1][min(y1, y2) + i] += 1
@@ -25,10 +23,8 @@ def part_two():
     course_map = [[0] * 1000 for x in range(1000)]
     coords_list = [[[int(i) for i in c.split(',')] for c in line.split(' -> ')] for line in array]
     for coords in coords_list:
-        y1 = coords[0][0]
-        y2 = coords[1][0]
-        x1 = coords[0][1]
-        x2 = coords[1][1]
+        y1, x1 = coords[0]
+        y2, x2 = coords[1]
         if x1 == x2:
             for i in range(abs(y1 - y2) + 1):
                 course_map[x1][min(y1, y2) + i] += 1
