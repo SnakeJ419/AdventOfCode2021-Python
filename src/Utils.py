@@ -8,3 +8,14 @@ def get_file_as_array(file_path: str):
             line = file.readline()
         file.close()
         return file_array
+
+
+def special(file_path: str):
+    with open(file_path, 'r') as file:
+        line = file.readline().strip('\n')
+        file_array = []
+        while line:
+            file_array.append(line)
+            line = file.readline().strip('\n')
+        file.close()
+        return file_array
